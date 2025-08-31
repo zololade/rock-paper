@@ -105,7 +105,11 @@ async function playGame() {
     await playround(getComputerChoice, getHumanChoice);
   }
   console.log(
-    `Final score — You: ${playerScoreTracker}, Computer: ${computerScoreTracker}`,
+    `
+
+** Final score — You: ${playerScoreTracker},
+** Computer: ${computerScoreTracker},
+** and ${5 - (computerScoreTracker + playerScoreTracker)} draws`,
   );
 
   rl.close();
