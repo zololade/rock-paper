@@ -61,9 +61,9 @@ async function playround(computerChoice, humanChoice) {
   const currentComputerChoice = computerChoice();
   const currentHumanChoice = await humanChoice();
 
-  console.log("\n--- New Round ---");
-  console.log(`You chose: ${currentHumanChoice}`);
-  console.log(`Computer chose: ${currentComputerChoice}`);
+  console.log(
+    `\n--- New Round ---\nYou chose: ${currentHumanChoice}\nComputer chose: ${currentComputerChoice}`,
+  );
 
   if (currentComputerChoice === currentHumanChoice) {
     console.log("Result: Draw\n");
@@ -72,10 +72,8 @@ async function playround(computerChoice, humanChoice) {
     (currentHumanChoice === "rock" && currentComputerChoice === "scissors") ||
     (currentHumanChoice === "scissors" && currentComputerChoice === "paper")
   ) {
-    if (currentComputerChoice === "paper") {
-      playerScoreTracker++;
-      console.log("Result: You win this round!\n");
-    }
+    playerScoreTracker++;
+    console.log("Result: You win this round!\n");
   } else {
     computerScoreTracker++;
     console.log("Result: Computer wins this round!\n");

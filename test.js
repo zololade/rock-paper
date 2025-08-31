@@ -19,6 +19,3 @@ rl.close();
 // });
 //
 //
- console.log(`${if(playerScoreTracker > computerScoreTracker){return "You lose"}}`)
-   console.log(`${if(playerScoreTracker > computerScoreTracker){return "You lose"} else{ return "You win"}}`)
-
