@@ -38,7 +38,6 @@ async function rlWrapper() {
 //get human choice
 async function getHumanChoice() {
   let inputData = await rlWrapper();
-  rl.close();
   return inputData;
 }
 
@@ -64,9 +63,48 @@ async function playround(computerChoice, humanChoice) {
 
   if (currentComputerChoice === currentHumanChoice) {
     console.log("draw");
-  } else {
-    console.log("winner to be determined");
+  } else if (
+    (currentHumanChoice === "rock" || currentHumanChoice === "paper") &&
+    (currentComputerChoice === "rock" || currentComputerChoice === "paper")
+  ) {
+    if (currentComputerChoice === "paper") {
+      computerScoreTracker++;
+      console.log("computer win this round");
+    } else {
+      playerScoreTracker++;
+      console.log("you win");
+    }
+  } else if (
+    (currentHumanChoice === "scissors" || currentHumanChoice === "rock") &&
+    (currentComputerChoice === "scissors" || currentComputerChoice === "rock")
+  ) {
+    if (currentComputerChoice === "rock") {
+      computerScoreTracker++;
+      console.log("computer win this round");
+    } else {
+      playerScoreTracker++;
+      console.log("you win");
+    }
+  } else if (
+    (currentHumanChoice === "paper" || currentHumanChoice === "scissors") &&
+    (currentComputerChoice === "paper" || currentComputerChoice === "scissors")
+  ) {
+    if (currentComputerChoice === "scissors") {
+      computerScoreTracker++;
+      console.log("computer win this round");
+    } else {
+      playerScoreTracker++;
+      console.log("you win");
+    }
   }
 }
 
-playround(getComputerChoice, getHumanChoice);
+//game start
+async function playGame() {
+  for (let round = 0; round < 5; round++) {
+    await playround(getComputerChoice, getHumanChoice);
+  }
+  rl.close();
+}
+
+playGame();
