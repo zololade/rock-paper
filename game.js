@@ -1,14 +1,72 @@
-import PromptSync from "prompt-sync";
+import readline from "node:readline/promises";
 
-const prompt = PromptSync();
+// Create an interface for input and output
 
-const name = prompt("Hello! what is your name? ");
-console.log(`Good morning ${name}`);
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
-console.log(Math.floor(Math.random() * 3) + 1);
+// store wins record
+let playerScoreTracker = 0;
+let computerScoreTracker = 0;
 
-// create a variable to store computer choices
-// create a function that returns random choices for computer when called
-// to refactor it, call the random fuction at the begining of the fuction and save the value in a variable
-// then use conditional statement to return a choice based on the random value generated
-// doing this helps me aviod global variable
+// grab human input
+async function rlWrapper() {
+  // return choice based on input data
+  let state = true;
+  while (state) {
+    const humanChoice = await rl.question(
+      "Pick a choice to proceed: rock[1], paper[2], or scissors[3]? ",
+    );
+
+    if (humanChoice === "1" || humanChoice.toLowerCase() === "rock") {
+      return "rock";
+    } else if (humanChoice === "2" || humanChoice.toLowerCase() === "paper") {
+      return "paper";
+    } else if (
+      humanChoice === "3" ||
+      humanChoice.toLowerCase() === "scissors"
+    ) {
+      return "scissors";
+    } else {
+      console.log("Invalid choice, try again.");
+    }
+  }
+}
+
+//get human choice
+async function getHumanChoice() {
+  let inputData = await rlWrapper();
+  rl.close();
+  return inputData;
+}
+
+// add logic to get human choice
+function getComputerChoice() {
+  // create a variable to store random choice
+  const decisionMaker = Math.floor(Math.random() * 3) + 1;
+
+  // write a conditional statement to make decision based on random choice
+  if (decisionMaker === 1) {
+    return "scissors";
+  } else if (decisionMaker === 2) {
+    return "paper";
+  } else {
+    return "rock";
+  }
+}
+
+// create a function that play rounds and output current record
+async function playround(computerChoice, humanChoice) {
+  const currentComputerChoice = computerChoice();
+  const currentHumanChoice = await humanChoice();
+
+  if (currentComputerChoice === currentHumanChoice) {
+    console.log("draw");
+  } else {
+    console.log("winner to be determined");
+  }
+}
+
+playround(getComputerChoice, getHumanChoice);
