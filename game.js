@@ -104,6 +104,10 @@ async function playGame() {
   for (let round = 0; round < 5; round++) {
     await playround(getComputerChoice, getHumanChoice);
   }
+  console.log(
+    `Final score — You: ${playerScoreTracker}, Computer: ${computerScoreTracker}`,
+  );
+
   rl.close();
 }
 
