@@ -61,41 +61,24 @@ async function playround(computerChoice, humanChoice) {
   const currentComputerChoice = computerChoice();
   const currentHumanChoice = await humanChoice();
 
+  console.log("\n--- New Round ---");
+  console.log(`You chose: ${currentHumanChoice}`);
+  console.log(`Computer chose: ${currentComputerChoice}`);
+
   if (currentComputerChoice === currentHumanChoice) {
-    console.log("draw");
+    console.log("Result: Draw\n");
   } else if (
-    (currentHumanChoice === "rock" || currentHumanChoice === "paper") &&
-    (currentComputerChoice === "rock" || currentComputerChoice === "paper")
+    (currentHumanChoice === "paper" && currentComputerChoice === "rock") ||
+    (currentHumanChoice === "rock" && currentComputerChoice === "scissors") ||
+    (currentHumanChoice === "scissors" && currentComputerChoice === "paper")
   ) {
     if (currentComputerChoice === "paper") {
-      computerScoreTracker++;
-      console.log("computer win this round");
-    } else {
       playerScoreTracker++;
-      console.log("you win");
+      console.log("Result: You win this round!\n");
     }
-  } else if (
-    (currentHumanChoice === "scissors" || currentHumanChoice === "rock") &&
-    (currentComputerChoice === "scissors" || currentComputerChoice === "rock")
-  ) {
-    if (currentComputerChoice === "rock") {
-      computerScoreTracker++;
-      console.log("computer win this round");
-    } else {
-      playerScoreTracker++;
-      console.log("you win");
-    }
-  } else if (
-    (currentHumanChoice === "paper" || currentHumanChoice === "scissors") &&
-    (currentComputerChoice === "paper" || currentComputerChoice === "scissors")
-  ) {
-    if (currentComputerChoice === "scissors") {
-      computerScoreTracker++;
-      console.log("computer win this round");
-    } else {
-      playerScoreTracker++;
-      console.log("you win");
-    }
+  } else {
+    computerScoreTracker++;
+    console.log("Result: Computer wins this round!\n");
   }
 }
 
@@ -104,13 +87,17 @@ async function playGame() {
   for (let round = 0; round < 5; round++) {
     await playround(getComputerChoice, getHumanChoice);
   }
-  console.log(
-    `
 
-** Final score — You: ${playerScoreTracker},
-** Computer: ${computerScoreTracker},
-** and ${5 - (computerScoreTracker + playerScoreTracker)} draws`,
+  console.log("\n=== Game Over ===");
+  console.log(
+    `Result: ${
+      playerScoreTracker > computerScoreTracker ? "You win" : "You lose"
+    }`,
   );
+  console.log(`Your Score: ${playerScoreTracker}`);
+  console.log(`Computer Score: ${computerScoreTracker}`);
+  console.log(`Draws: ${5 - (playerScoreTracker + computerScoreTracker)}`);
+  console.log("=================\n");
 
   rl.close();
 }
