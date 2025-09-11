@@ -1,0 +1,117 @@
+:root {
+  --triangle-sizer: 8rem;
+  --triangle-scale: calc(300 / 265); /* unitless */
+  --triangle-width: calc(var(--triangle-sizer) * var(--triangle-scale));
+}
+body {
+  background-image: linear-gradient(
+    to bottom,
+    hsl(214, 47%, 23%),
+    hsl(237, 48%, 15%)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 0;
+  align-items: center;
+  color: #fff;
+}
+
+header {
+  display: flex;
+  border: 2.8px solid #5b6c86;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  flex-direction: row;
+  min-width: 250px;
+  justify-content: space-between;
+}
+
+header .h1 {
+  padding-left: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1rem;
+  line-height: 0.85;
+}
+
+.h1 span {
+  font-weight: 900;
+}
+
+footer {
+  border: 2.8px solid #5b6c86;
+  border-radius: 0.5rem;
+  padding: 0.25rem 2rem;
+}
+
+footer div {
+  font-size: 0.8rem;
+}
+.dummy-container {
+  height: var(--triangle-sizer);
+  width: var(--triangle-width);
+  position: relative;
+  background-image: url("../assets/images/bg-triangle.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+}
+.icon {
+  position: absolute;
+  background: #fff;
+  width: 6rem;
+  padding: 1.3rem;
+  height: 6rem;
+  display: flex;
+  border-radius: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.rock {
+  bottom: 0;
+  left: 50%;
+  border: 0.7rem solid hsl(349, 71%, 52%);
+  box-shadow:
+    0px 4px 0px 0px #bcbfd0 inset,
+    0px 4px 0px 0px hsl(347, 75%, 35%);
+  transform: translate(-50%, 50%);
+}
+.scissors {
+  right: 0;
+  top: 0;
+  border: 0.7rem solid hsl(39, 89%, 49%);
+  box-shadow:
+    0px 4px 0px 0px #bcbfd0 inset,
+    0px 4px 0px 0px hsl(28, 76%, 44%);
+  transform: translate(50%, -50%);
+}
+.paper {
+  left: 0;
+  top: 0;
+  border: 0.7rem solid hsl(230, 89%, 62%);
+  box-shadow:
+    0px 4px 0px 0px #bcbfd0 inset,
+    0px 4px 0px 0px hsl(229, 64%, 46%);
+  transform: translate(-50%, -50%);
+}
+.score-sheet {
+  background-color: #fff;
+  border-radius: 0.25rem;
+  padding: 0.6rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.8;
+}
+.score {
+  color: hsl(229, 25%, 31%);
+  font-size: 1.75rem;
+  font-weight: 900;
+}
+.score-title {
+  color: hsl(229, 64%, 46%);
+  font-size: 0.7rem;
+  padding-bottom: 0.5rem;
+}
