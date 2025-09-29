@@ -2,21 +2,21 @@
 let playerScoreTracker = 0;
 let computerScoreTracker = 0;
 let button = document.querySelectorAll("button");
-// let resetBtn = document.querySelector(".restart");
 let scoreField = document.querySelector(".comment");
 let compScore = document.querySelector(".computer-score");
 let playerScore = document.querySelector(".your-score");
 let gameOver = false;
 let timeOut;
+
 // add logic to get computer choice
 function getComputerChoice() {
   // create a variable to store random choice
-  const decisionMaker = Math.floor(Math.random() * 3) + 1;
+  const randomChoice = Math.floor(Math.random() * 3) + 1;
 
   // write a conditional statement to make decision based on random choice
-  if (decisionMaker === 1) {
+  if (randomChoice === 1) {
     return "scissors";
-  } else if (decisionMaker === 2) {
+  } else if (randomChoice === 2) {
     return "paper";
   } else {
     return "rock";
