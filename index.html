@@ -1,56 +1,83 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rock, Paper, Scissors</title>
-    <link rel="stylesheet" type="text/css" href="./src/styles-reset.css" />
-    <link rel="stylesheet" type="text/css" href="./src/styles.css" />
-    <link rel="stylesheet" type="text/css" href="./src/rules.css" />
-    <script src="./src/ui.js" defer></script>
-  </head>
-  <body>
-    <header>
-      <div class="h1">
-        <span>ROCK</span>
-        <span>PAPER</span>
-        <span>SCISSORS</span>
-      </div>
-      <div class="score-sheet">
-        <div class="score-title">score</div>
-        <div class="score">12</div>
-      </div>
-    </header>
-    <main>
-      <div class="dummy-container">
-        <div class="icon rock">
-          <img src="./assets/images/icon-rock.svg" alt="rock" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rock, Paper, Scissors</title>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    .button-container {
+      position: relative;
+
+    }
+
+    .center-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .button-container>* {
+      display: block;
+    }
+
+    .button-container>*:last-child {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+
+    .score {
+      margin: auto;
+      max-width: fit-content;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .score p {
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <form>
+      <fieldset>
+        <legend>ROCK, PAPER and SCISSORS</legend>
+        <div class="score">
+          <p class="computer-score">Computer: </p>
+          <p class="your-score">You: </p>
         </div>
-        <div class="icon paper">
-          <img src="./assets/images/icon-paper.svg" alt="paper" />
-        </div>
-        <div class="icon scissors">
-          <img src="./assets/images/icon-scissors.svg" alt="scissors" />
-        </div>
-      </div>
-      <div class="modal-container openModal">
-        <div class="modal">
-          <span class="modal-title">RULES</span>
-          <div class="modal-rules">
-            <img src="./assets/images/image-rules.svg" alt="image-rules" />
+        <div class="comment">Ready when you are!</div>
+        <hr>
+        <div class="button-container">
+          <div class="center-buttons">
+            <button data-choice="rock">
+              Rock
+            </button>
+            <button data-choice="paper">
+              Paper
+            </button>
+            <button data-choice="scissors">
+              Scissors
+            </button>
           </div>
-          <div class="modal-close">
-            <img
-              src="./assets/images/icon-close.svg"
-              alt="close"
-              class="modalImg"
-            />
-          </div>
+          <button class="restart" data-restart="restart">
+            Restart
+          </button>
         </div>
-      </div>
-    </main>
-    <footer>
-      <div>RULES</div>
-    </footer>
-  </body>
+      </fieldset>
+    </form>
+
+  </header>
+  <main></main>
+
+  <script src="./src/js/game.js"></script>
+</body>
+
 </html>
